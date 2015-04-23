@@ -1,3 +1,5 @@
+@echo off
+:SOF
 @REM Delete so if builder fails it wont exist
 del source\Cosmos.Build.Builder\bin\Debug\Cosmos.Build.Builder.*
 
@@ -13,4 +15,7 @@ start source\Cosmos.Build.Builder\bin\Debug\Cosmos.Build.Builder.exe -bat %1 %2 
 @echo _
 @echo _
 @echo Something went wrong.
-@pause
+echo Retry?
+set /p %retry%=Y/n: 
+if %retry% == Y goto :SOF
+if %retry% == n goto :EOF
